@@ -1,0 +1,26 @@
+public static ArrayList<Integer> largestThreeDistictElement(int arr[]){
+        ArrayList<Integer> res=new ArrayList<Integer>();
+        int first=Integer.MIN_VALUE;
+        int second=first;
+        int third=second;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>first){
+                third=second;
+                second=first;
+                first=arr[i];
+            }
+            else if(arr[i]>second&&arr[i]!=third){
+                third=second;
+                second=arr[i];
+            }
+            else if(arr[i]>third&&arr[i]!=second)third=arr[i];
+            else continue;
+        }
+        res.add(first);
+        res.add(second);
+        res.add(third);
+        return res;
+    }
+    
+    
+    Link:-https://ide.geeksforgeeks.org/ef9968af-8469-4fac-8acd-4d6cf2a86613
