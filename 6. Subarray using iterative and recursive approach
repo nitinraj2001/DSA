@@ -1,0 +1,40 @@
+1. Iterative approach
+
+static void subArray( int n)
+    {
+        // Pick starting point
+        for (int i=0; i <n; i++)
+        {
+            // Pick ending point
+            for (int j=i; j<n; j++)
+            {
+                // Print subarray between current starting
+                // and ending points
+                for (int k=i; k<=j; k++)
+                    System.out.print(arr[k]+" ");
+            }
+        }
+    }
+    
+    
+    2. Recursive approach
+    
+    static void printSubArrays(int[] arr, int start, int end)
+    {
+        // Stop if we have reached the end of the array
+        if (end == arr.length)
+            return;
+        // Increment the end point and start from 0
+        else if (start > end)
+            printSubArrays(arr, 0, end + 1);
+        // Print the subarray and increment the starting
+        // point
+        else {
+            System.out.print("[");
+            for (int i = start; i < end; i++)
+                System.out.print(arr[i] + ", ");
+            System.out.println(arr[end] + "]");
+            printSubArrays(arr, start + 1, end);
+        }
+        return;
+    }
