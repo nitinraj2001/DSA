@@ -1,0 +1,28 @@
+1. Iterative approach
+
+static void rvereseArray(int arr[],int start, int end){
+        int temp; 
+        while (start < end)
+        {
+            temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+} 
+
+2. Recursive approach
+
+static void reverseArray(int arr[],int start, int end){
+   //base case if the value of start is greater or equal to end thyen return
+   if(start>=end)return;
+   else{
+     // swap the values of start and end
+     int temp;
+     temp=arr[start];
+     arr[start]=arr[end];
+     arr[end]=start;
+     return reverseArray(arr,start+1,end-1);
+   }
+}
