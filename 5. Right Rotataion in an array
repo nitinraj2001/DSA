@@ -1,0 +1,43 @@
+
+import java.util.*;
+
+public class Main
+{
+    static void rotateRight(int arr[], int size,int k){
+        // reverse last k elements
+        int i,j,temp;
+        for(i=size-k,j=size-1;i<j;i++,j--){
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+        //reverse the first n-k elements
+        for(i=0,j=size-k-1;i<j;i++,j--){
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+        //reverse the complete array
+        for(i=0,j=size-1;i<j;i++,j--){
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the size of an array");
+		int size=sc.nextInt();
+		int arr[]=new int[size];
+		System.out.println("enter the values of an array");
+		for(int i=0;i<size;i++){
+		    arr[i]=sc.nextInt();
+		}
+		System.out.println("enter the value of position to be rotated right");
+		//rotate the array to k position right
+		int k=sc.nextInt();
+		rotateRight(arr,size,k);
+		// print the resultant array
+		for(int p=0;p<size;p++)System.out.print(arr[p]+" ");
+	}
+}
