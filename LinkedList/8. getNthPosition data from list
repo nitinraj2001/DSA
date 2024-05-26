@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+public class LinkedList {
+
+        // Linked list must have a head which represents its start Node
+        Node head=null;
+
+        // Create a static Node class which is used as a reference to other nodes of linked list
+        static class Node{
+            int data;
+            Node next;
+
+            Node(int data){
+                this.data=data;
+            }
+        }
+
+        public static void main(String[] args) {
+
+            LinkedList list = new LinkedList();
+
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter total nodes to be in linked list 1");
+            int count = sc.nextInt();
+            for (int i = 0; i < count; i++) {
+                System.out.println("Enter the data to be inserted");
+                int data = sc.nextInt();
+                // insert the data into the list
+                list.insert(list, data);
+            }
+            if (list.head != null) {
+                list.printLinkedList(list);
+            }
+            System.out.println("Enter the nth position u want ");
+            int n=sc.nextInt();
+            int result = list.getNthNode(list,n);
+            if(result>0)
+            System.out.println("nth position data are "+result);
+            else{
+                System.out.println("nth position is not present in the list");
+            }
+
+        }
+
+    //create a method to insert values in the linked list
+    public  LinkedList insert(LinkedList currentListList, int data){
+        // First create a new node which is to be inserted in the linked list
+        Node newNode = new Node(data);
+        //check if the head node of the linked list is set to null then assign newNode to head
+        if(currentListList.head==null){
+            head=newNode;
+            return currentListList;
+        }
+        // if head is not null then iterate the list and insert the data at the end
+        Node last = currentListList.head;
+        while(last.next!=null){
+            last=last.next;
+        }
+        // once the last node is found then add newNode in last node next
+        last.next=newNode;
+        // return the list
+        return currentListList;
+    }
+
+    public void printLinkedList(LinkedList currentList){
+        Node currentNode = currentList.head;
+        System.out.println("Data in the linked list are as follows:: ");
+        while(currentNode.next!=null){
+            System.out.print(currentNode.data + " ");
+            currentNode=currentNode.next;
+        }
+        System.out.println(currentNode.data);
+    }
+
+    public int getNthNode(LinkedList list, int n){
+       Node currentNode = list.head;
+       int count=0;
+       while(currentNode!=null){
+           if(count==n)return currentNode.data;
+           else{
+               count=count+1;
+               currentNode=currentNode.next;
+           }
+       }
+       if(count<n && currentNode==null){
+           return -1;
+       }
+       return currentNode.data;
+    }
+
+
+}
