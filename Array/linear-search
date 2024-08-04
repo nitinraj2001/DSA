@@ -43,3 +43,5 @@ public class Coding {
         return res;
     }
 }
+
+# Time complexity of linear search is 0(n) 
