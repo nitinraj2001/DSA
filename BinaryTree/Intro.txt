@@ -1,0 +1,98 @@
+A Binary Tree is a hierarchical data structure where each node has at most two children — usually called:
+
+Left child
+
+Right child
+
+Each node contains:
+
+Data (value)
+
+Pointer/reference to left child
+
+Pointer/reference to right child
+
+        1
+       / \
+      2   3
+     / \   \
+    4   5   6
+
+⚙️ 2. Basic Terminology
+Term	Meaning
+Root	The topmost node (e.g., 1 in the example above)
+Child	A node directly connected below another node
+Parent	A node that has child nodes
+Leaf	A node with no children (e.g., 4, 5, 6)
+Siblings	Nodes having the same parent (e.g., 2 and 3)
+Depth of a node	Distance (edges) from root to that node
+Height of a node	Longest path from node to a leaf
+Height of tree	Height of root node
+Subtree	A tree formed by any node and its descendants
+🌱 3. Types of Binary Trees
+Type	Description	Example
+Full Binary Tree	Every node has 0 or 2 children	✅
+Perfect Binary Tree	All internal nodes have 2 children and all leaves are at same level	✅
+Complete Binary Tree	All levels except possibly last are full, and nodes are as left as possible	✅
+Balanced Binary Tree	Height difference between left and right subtree ≤ 1	✅
+Degenerate / Skewed Tree	Each parent has only one child (like a linked list)	🚫
+🔍 4. Tree Traversals
+
+Tree traversal means visiting each node exactly once in a specific order.
+
+(A) Depth-First Traversal (DFS)
+
+Uses stack or recursion.
+
+Type	Order	Example Output for Tree [1,2,3,4,5,6]
+Preorder	Root → Left → Right	1 2 4 5 3 6
+Inorder	Left → Root → Right	4 2 5 1 3 6
+Postorder	Left → Right → Root	4 5 2 6 3 1
+(B) Breadth-First Traversal (BFS)
+
+Uses queue → Level by Level traversal
+👉 Also known as Level Order Traversal
+
+Output: 1 2 3 4 5 6
+
+🧮 5. Common Operations
+Operation	Description	Time Complexity
+Insert	Add a new node	O(H)
+Search	Find a value	O(H)
+Delete	Remove a node	O(H)
+Traversal	Visit all nodes	O(N)
+
+🧠 Here, H = height of the tree
+For balanced tree → H = log₂N
+For skewed tree → H = N
+
+🧠 6. Variants of Binary Trees
+Tree Type	Description
+Binary Search Tree (BST)	Left < Root < Right
+AVL Tree	Self-balancing BST (height diff ≤ 1)
+Red-Black Tree	Self-balancing BST using colors
+Segment Tree	Used for range queries
+Fenwick Tree (BIT)	Used for prefix sum problems
+Trie	Used for storing strings efficiently
+Heap (Binary Heap)	Complete tree with heap property (min/max)
+⚡ 7. Time Complexities Summary
+Operation	Balanced Tree	Skewed Tree
+Search	O(log N)	O(N)
+Insert	O(log N)	O(N)
+Delete	O(log N)	O(N)
+Traversal	O(N)	O(N)
+🧩 8. Real-World Applications
+
+Expression Trees (used in compilers)
+
+Binary Search Trees (for fast lookup)
+
+Heaps (priority queues)
+
+Huffman Coding Tree (data compression)
+
+Syntax Tree / Parse Tree
+
+Routing Algorithms
+
+AI Decision Trees
