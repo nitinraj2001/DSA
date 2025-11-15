@@ -1,0 +1,18 @@
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        // Inorder to use two pointer approach let's create two pointers
+        int slow = 0, fast = nums.length-1, index = nums.length-1;
+        int res[] = new int[nums.length]; // new array need to be created to overcome override issue
+        while(slow<=fast){
+            if(Math.abs(nums[slow])> Math.abs(nums[fast])){
+                res[index--] = nums[slow] * nums[slow];
+                slow = slow + 1;
+            }
+            else{
+                res[index--] = nums[fast] * nums[fast];
+                fast = fast-1;
+            }
+        }
+        return res;
+    }
+}
