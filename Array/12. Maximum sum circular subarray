@@ -1,0 +1,27 @@
+class Solution {
+    public int maxSubarraySumCircular(int[] nums) {
+        
+    // Create variable to store currentSum and maxSum
+        int currentSum = nums[0];
+        int currentMin = 0; 
+        int minSum = 0;
+        int maxSum = nums[0];
+        int totalSum = nums[0];
+        // Edge case if length is 0 then return first element
+        if(nums.length==1)return nums[0];
+        // Iterate over the loop and apply kadane's algorith
+        // If previous subarray sum is negative then skip that and continue with next subarray
+        for(int i=1;i<nums.length;i++){
+            currentSum=Math.max(nums[i],currentSum+nums[i]);
+            maxSum = Math.max(maxSum,currentSum);
+            // Apply kadane's algorithm reverse to have min sum of subarray
+            currentMin = Math.min(nums[i],currentMin+nums[i]);
+            minSum = Math.min(minSum,currentMin);
+            totalSum+=nums[i];
+        }
+        //handle one negative case if all values are nefative
+        if(maxSum<0)return maxSum;
+        // for circular array actual max sum is max of normal kadane's output and totalSum - minSum
+        return Math.max(maxSum,totalSum-minSum);
+    }
+}
