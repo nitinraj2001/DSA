@@ -1,0 +1,14 @@
+class Solution {
+    public boolean check(int[] nums) {
+        // Check the condition in which case we consider an rotated array is sorted
+        int count = 0;
+        for(int i = 0; i<nums.length-1;i++){
+            // check inversion condition if previous element is greater then next increase count
+            if(nums[i]>nums[i+1])count = count + 1;
+        }
+        // check circular array condition
+        if(nums[nums.length-1]>nums[0])count=count+1;
+        // There should be at most one inversion only for rotated array to be sorted.
+        return count<=1;
+    }
+}
