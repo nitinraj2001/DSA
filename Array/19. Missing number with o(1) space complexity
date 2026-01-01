@@ -1,0 +1,15 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+      int a=nums.length;
+      int xor = 0; 
+      // We will use xor approach as xor is exclusive or
+      // It will return 1 if bits are different and 0 if bits are same
+      for(int i = 0; i< a; i++){
+        xor^=i;
+        xor^=nums[i];
+      }
+      // Also do xor with last value as n is also bounded [0,n]
+       xor^=a;
+       return xor;
+    }
+}
