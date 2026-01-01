@@ -1,0 +1,13 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        // We will use two pointers approach
+        int slow=0; // First pointer will always point to the start of an array
+        for(int fast = 1; fast<nums.length;fast++){
+            if(nums[fast]!=nums[slow]){ // It always keeps check whether next element is same to previous or not
+                slow++; // As soon we found an element that is not same we increment first counter by 1 and save that element to that position
+                nums[slow] = nums[fast]; // To maintain unquiue element array
+            }
+        }
+        return slow+1; // here number of unique elements is equal to number of times slow pointer moves next + 1
+    }
+}
