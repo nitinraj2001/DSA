@@ -1,0 +1,22 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+       int length = nums.length;
+       k = (k+length)%length; // This is done to handle case if k>length
+       int count = 0; // It will keep track no of elements that are moved
+       int i = 0;
+       while(count<length){ // This loop will track that only one time each element is moved
+         int current = i;
+         int prev = nums[i];
+        do{
+            int pos = (current + k)%length;
+            int temp = nums[pos];
+            nums[pos] = prev;
+            prev = temp;
+            current = pos;
+            count = count + 1;
+        }while(current!=i);
+          i=i+1;
+       }
+
+    }
+}
