@@ -1,0 +1,12 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        // Because every number except one appears twice,
+        // XORing all the numbers together will cause all pairs to cancel out, 
+        //leaving only the single number. 
+       int result = 0;
+        for (int num : nums) {
+            result ^= num; // XOR each element
+        }
+        return result;
+    }
+}
