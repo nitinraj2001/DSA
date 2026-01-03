@@ -1,0 +1,14 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        // Since the majority element appears more than n/2 times, we can use Boyer–Moore Voting Algorithm to find it in O(1) space.”
+        int candidate = 0;
+        int count = 0;
+        for(int num:nums){
+            // If count is zero then update candidate with current element
+            if(count==0)candidate = num;
+            // If current candidate matches with current element incement count else decrement it
+            count +=(candidate == num)?1:-1;
+        }
+        return candidate;
+    }
+}
