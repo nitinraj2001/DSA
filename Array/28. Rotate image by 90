@@ -1,0 +1,33 @@
+class Solution {
+    public void rotate(int[][] matrix) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+        // Transpose the actual 2D matrix so that every (i,j)-->(j,i)
+        // Transposing a matrix means swapping (i,j) --> (j,i)
+        for(int i=0;i<row-1;i++){
+            for(int j=i+1;j<col;j++){
+               int temp = matrix[i][j];
+               matrix[i][j]=matrix[j][i];
+               matrix[j][i]=temp;
+            }
+        }
+        // Once the transpose matrix produced now reverse each row
+        reverse(matrix);
+    }
+
+    public void reverse(int[][] matrix){
+         for(int i = 0;i<matrix.length;i++){
+            swap(matrix[i],0,matrix.length-1);
+         }
+    }
+
+    public void swap(int[] arr, int start, int end){
+        while(start<=end){
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start = start + 1;
+            end = end - 1;
+        }
+    }
+}
