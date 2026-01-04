@@ -1,0 +1,21 @@
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        // This problem is solve by two pointer approach
+        // In this there is equal no of positive and negative numbers
+        int n = nums.length;
+        int[] ans = new int[n];
+        int pos = 0; // even index
+        int neg = 1; // odd index
+
+        for (int num : nums) {
+            if (num > 0) { // If the current element is postive then add it in num and increment pos by 2
+                ans[pos] = num;
+                pos += 2;
+            } else { // If current element is negative then add it to negative index and increase neg pointer by 2 index.
+                ans[neg] = num;
+                neg += 2;
+            }
+        }
+        return ans;
+    }
+}
