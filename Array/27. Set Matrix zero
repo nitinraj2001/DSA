@@ -1,0 +1,43 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+        boolean firstRowZero = false;
+        boolean firstColZero = false;
+        // Check if first row has any zero if it has marked flag as true
+        for(int i=0;i<col;i++){
+            if(matrix[0][i] == 0){
+                firstRowZero = true;
+                break;
+            } 
+        }
+        // Check if first column has any zero if it has mark flag as true
+         for(int j=0;j<row;j++){
+            if(matrix[j][0] == 0){
+                firstColZero = true;
+                break;
+            } 
+        }
+        // mark if any row or column has zero, exclude first row and first column
+        for(int i = 1; i<row; i++){
+            for(int j=1;j<col; j++){
+                if(matrix[i][j]==0){
+                    matrix[i][0]=0;
+                     matrix[0][j]=0;
+                }
+            }
+        }
+        // check for every ceil (i,j) if it has zero, zero entire row and column
+        for(int i=1;i<row;i++){
+            for(int j=1;j<col;j++){
+                if(matrix[i][0]==0 || matrix[0][j]==0)matrix[i][j]=0;
+            }
+        }
+        if(firstRowZero){
+            for(int i=0;i<col;i++)matrix[0][i]=0;
+        }
+        if(firstColZero){
+            for(int j=0;j<row;j++)matrix[j][0]=0;
+        }
+    }
+}
