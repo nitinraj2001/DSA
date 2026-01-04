@@ -1,0 +1,26 @@
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        // First we will maintain one set as lookup is O(1) in set
+        Set<Integer> set = new HashSet<>();
+        for(int num: nums)set.add(num);
+        int maxCount = 0;
+        // now we will iterate the set
+        for(int num: set){
+            int currentStreak = 1;
+            int currentNum = num;
+            // check whether any element lower than current element is present or not
+            // If not it will be the starting point of sequenece
+            if(!set.contains(currentNum-1)){
+              // Execute the loop until num sequence are present in set
+              while(set.contains(currentNum+1)){
+                currentStreak = currentStreak + 1;
+                currentNum = currentNum + 1;
+              }
+              maxCount = Math.max(maxCount,currentStreak);
+            }
+        }
+        return maxCount;
+        // The HashSet solution is optimal. We achieve O(n) time, which matches the theoretical lower bound, and 
+        //O(n) extra space is unavoidable unless we sacrifice time complexity.
+    }
+}
