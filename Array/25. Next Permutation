@@ -1,0 +1,33 @@
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int length = nums.length;
+        int i = length - 2; // i will be start from second last element to avoid ArrayOutOfBoundIssue
+        // Let's iterate the nums and find the pivot element
+        while(i>=0 && nums[i]>=nums[i+1]) i = i-1;
+        // Let's find the slitly greater element after pivot element
+        // In case we have array fully decreasing if i>= check not there ArrayOutOfIndex exp will come
+        if(i>=0){
+         int j = length - 1;
+         while(nums[j]<=nums[i]) j = j -1;
+         //swap the pivot element with slitly greater element
+         // Only need to swap in case of non decreasing array
+         swap(nums,i,j);
+       }
+        // reverse elements after the pivot index
+        reverse(nums, i+1, length-1);
+    }
+
+    public void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public void reverse(int nums[], int start, int end){
+       while(start<end){
+        swap(nums,start,end);
+        start = start + 1;
+        end = end - 1;
+       }
+    }
+}
