@@ -1,0 +1,31 @@
+ /*
+         If the number of negative elements is even, you can eventually make all elements positive.
+         Then the maximum sum is just the sum of absolute values of all elements.
+         If the number of negative elements is odd, you’ll always have to leave one negative.
+         To maximize the total, that remaining negative should be the one with the smallest absolute value (so the loss is minimized).
+         So the answer becomes:
+         sum of all absolute values − 2 × (smallest absolute value).
+ */
+class Solution {
+    public long maxMatrixSum(int[][] matrix) {
+        long sum = 0;
+        int count = 0;
+        int minAbsValue = Integer.MAX_VALUE;
+        for(int i = 0; i<matrix.length; i++){
+            for(int j = 0; j<matrix[0].length; j++){
+                int value = matrix[i][j];
+                // Count total number of negative elements
+                if(value<0)count = count + 1;
+                int absVal = Math.abs(value);
+                sum = sum + absVal;
+                minAbsValue = Math.min(minAbsValue,absVal);
+            }
+        }
+        // Check if no of negative elements are postive then return sum
+        if(count%2==0)return sum;
+        // If no of negative elements are odd then subtract the min abs val
+        sum = sum - 2L*minAbsValue;
+        return sum;
+       
+    }
+}
