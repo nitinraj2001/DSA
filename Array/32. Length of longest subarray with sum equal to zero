@@ -1,0 +1,18 @@
+class Solution {
+    int maxLength(int nums[]) {
+       int num = nums.length;
+       int maxLength = 0;
+       int sum = 0;
+       HashMap<Integer, Integer> res = new HashMap<Integer, Integer>();
+       for(int i=0;i<num;i++){
+           sum = sum + nums[i];
+           if(sum == 0) maxLength = i+ 1;
+           if(res.containsKey(sum - 0)){
+               int previousIndex = res.get(sum - 0);
+               maxLength = Math.max(maxLength, i - previousIndex);
+           }
+           res.putIfAbsent(sum,i);
+       }
+       return maxLength;
+    }
+}
