@@ -1,0 +1,27 @@
+class Solution {
+    public int subarrayXor(int[] nums, int k) {
+        // Map to store prefixXor -> frequency
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int xor = 0;     // prefix XOR
+        int count = 0;
+
+        // Base case: prefix XOR = 0 has occurred once
+        map.put(0, 1);
+
+        for (int num : nums) {
+            xor ^= num;
+
+            // If xor ^ k exists, then subarray XOR = k
+            int required = xor ^ k;
+            if (map.containsKey(required)) {
+                count += map.get(required);
+            }
+
+            // Store/update frequency of current prefix XOR
+            map.put(xor, map.getOrDefault(xor, 0) + 1);
+        }
+
+        return count;
+    }
+}
