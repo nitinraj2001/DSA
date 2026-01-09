@@ -1,0 +1,17 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        // Since negative elements product can flig the sign and could cause max product
+        // Need to maintain maxProduct and minproduct at current index.
+        int maxProduct = nums[0];
+        int minProduct = nums[0];
+        int globalMax = nums[0];
+        for(int i=1;i<nums.length; i++){
+            int currentVal = nums[i];
+            int prevMax = maxProduct;
+            maxProduct = Math.max(currentVal, Math.max(prevMax*currentVal, minProduct*currentVal));
+            minProduct = Math.min(currentVal, Math.min(prevMax*currentVal, minProduct*currentVal));
+            globalMax = Math.max(globalMax, maxProduct);
+        }
+        return globalMax;
+    }
+}
