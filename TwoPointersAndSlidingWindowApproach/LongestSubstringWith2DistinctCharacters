@@ -1,0 +1,23 @@
+import java.util.*;
+public class Solution {
+	public static int lengthOfLongestSubstring(String s) {
+		HashMap<Character, Integer> res = new HashMap<>();
+		int left = 0;
+		int maxLength = -1;
+		for(int right=0; right<s.length(); right++){
+			// for every iteration let's update frequency of each character
+			res.put(s.charAt(right), res.getOrDefault(s.charAt(right),0)+1);
+			// Now check the shinking condition, substring with atmost 2 distinct char
+			while(res.size()>2){
+              // shrink the window from the left 
+			  res.put(s.charAt(left), res.get(s.charAt(left))-1);
+			  if(res.get(s.charAt(left)) == 0) res.remove(s.charAt(left));
+			  // now increment the left pointer
+			  left = left + 1;
+			}
+			// for every valid window compute the max length
+			if(res.size()<=2) maxLength = Math.max(maxLength, right-left + 1);
+		}
+		return maxLength;
+	}
+}
