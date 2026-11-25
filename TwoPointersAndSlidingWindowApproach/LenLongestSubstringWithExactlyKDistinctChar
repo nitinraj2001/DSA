@@ -1,0 +1,27 @@
+class Solution {
+    public int longestKSubstr(String s, int k) {
+        return atMost(s, k);
+    }
+    
+    public int atMost(String s, int k){
+        if(k<0) return 0;
+       // if(s == null || s == '' || s.length() == 0) return 0;
+        HashMap<Character, Integer> res = new HashMap<>();
+        // we will maintain a hashmap for each character frequency
+        // This problem is solved using sliding window approach with hashmap
+        int left = 0;
+        int maxLength = -1;
+        for(int right = 0; right<s.length(); right++){
+         res.put(s.charAt(right), res.getOrDefault(s.charAt(right),0) + 1);
+          while(res.size() > k){
+              // we need to shrink the window from left 
+              res.put(s.charAt(left), res.get(s.charAt(left))-1);
+              if(res.get(s.charAt(left)) == 0) res.remove(s.charAt(left));
+              left = left + 1;
+          }
+          // for every valid window compute the max length
+          if(res.size() == k)  maxLength = Math.max(maxLength, right-left + 1);
+        }
+        return maxLength;
+    }
+}
